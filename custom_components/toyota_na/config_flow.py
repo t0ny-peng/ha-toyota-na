@@ -3,8 +3,8 @@ import logging
 from homeassistant import config_entries
 import voluptuous as vol
 
-from toyota_na import ToyotaOneAuth, ToyotaOneClient
-from toyota_na.exceptions import AuthError
+from toyota_na_custom import ToyotaOneAuth, ToyotaOneClient
+from toyota_na_custom.exceptions import AuthError
 
 from .const import DOMAIN
 
@@ -23,7 +23,7 @@ class ToyotaNAConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema(
-                {vol.Required("username"): str, vol.Required("password"): str}
+                {vol.Required("username"): str, vol.Required("password"): str, vol.Required("otp_url"): str, vol.Required("otp_timeout"): int}
             ),
             errors=errors,
         )
@@ -31,13 +31,15 @@ class ToyotaNAConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_get_entry_data(self, user_input, errors):
         try:
             client = ToyotaOneClient()
-            await client.auth.login(user_input["username"], user_input["password"])
+            await client.auth.login(user_input["username"], user_input["password"], user_input["otp_url"], user_input["otp_timeout"])
             id_info = await client.auth.get_id_info()
             return {
                 "tokens": client.auth.get_tokens(),
                 "email": id_info["email"],
                 "username": user_input["username"],
                 "password": user_input["password"],
+                "otp_url": user_input["otp_url"],
+                "otp_timeout": user_input["otp_timeout"],
             }
         except AuthError:
             errors["base"] = "not_logged_in"

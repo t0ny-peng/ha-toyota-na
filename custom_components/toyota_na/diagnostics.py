@@ -9,7 +9,7 @@ from homeassistant.const import (
     CONF_PASSWORD,
 )
 from homeassistant.core import HomeAssistant
-from toyota_na.client import ToyotaOneClient
+from toyota_na_custom.client import ToyotaOneClient
 
 from .const import DOMAIN
 

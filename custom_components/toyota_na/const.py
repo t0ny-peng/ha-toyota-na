@@ -1,10 +1,10 @@
-from toyota_na.vehicle.base_vehicle import VehicleFeatures
+from toyota_na_custom.vehicle.base_vehicle import VehicleFeatures
 
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass
 from homeassistant.const import LENGTH_MILES, PERCENTAGE, PRESSURE_PSI
 
-from toyota_na.vehicle.base_vehicle import RemoteRequestCommand
+from toyota_na_custom.vehicle.base_vehicle import RemoteRequestCommand
 
 
 DOMAIN = "toyota_na"

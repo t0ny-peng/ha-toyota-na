@@ -2,11 +2,11 @@ from ctypes import cast
 from datetime import timedelta
 import logging
 
-from toyota_na.auth import ToyotaOneAuth
-from toyota_na.client import ToyotaOneClient
-from toyota_na.exceptions import AuthError, LoginError
-from toyota_na.vehicle.base_vehicle import RemoteRequestCommand, ToyotaVehicle
-from toyota_na.vehicle.vehicle import get_vehicles
+from toyota_na_custom.auth import ToyotaOneAuth
+from toyota_na_custom.client import ToyotaOneClient
+from toyota_na_custom.exceptions import AuthError, LoginError
+from toyota_na_custom.vehicle.base_vehicle import RemoteRequestCommand, ToyotaVehicle
+from toyota_na_custom.vehicle.vehicle import get_vehicles
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
@@ -32,6 +32,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         ToyotaOneAuth(
             initial_tokens=entry.data["tokens"],
             callback=lambda tokens: update_tokens(tokens, hass, entry),
+            otp_url=entry.data["otp_url"],
+            otp_timeout=entry.data["otp_timeout"],
         )
     )
     try:

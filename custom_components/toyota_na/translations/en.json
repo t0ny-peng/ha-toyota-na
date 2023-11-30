@@ -1,18 +1,20 @@
 {
-    "config": {
-      "step": {
-        "user": {
-          "title": "Toyota Connected Services",
-          "description": "Please input the username and password",
-          "data": {
-            "username": "Username",
-            "password": "Password"
-          }
+  "config": {
+    "step": {
+      "user": {
+        "title": "Toyota Connected Services",
+        "description": "Please input the username and password",
+        "data": {
+          "username": "Username",
+          "password": "Password",
+          "otp_url": "OTP URL",
+          "otp_timeout": "OTP Timeout"
         }
-      },
-      "error": {
-        "not_logged_in": "Not logged in",
-        "unknown": "Unexpected error."
       }
+    },
+    "error": {
+      "not_logged_in": "Not logged in",
+      "unknown": "Unexpected error."
     }
   }
+}

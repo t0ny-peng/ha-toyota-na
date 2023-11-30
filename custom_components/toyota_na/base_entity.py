@@ -1,6 +1,6 @@
 from typing import Union
 
-from toyota_na.vehicle.base_vehicle import ToyotaVehicle, VehicleFeatures
+from toyota_na_custom.vehicle.base_vehicle import ToyotaVehicle, VehicleFeatures
 
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import (

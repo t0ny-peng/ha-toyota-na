@@ -1,10 +1,10 @@
 from typing import Any, Union, cast
 import logging
 
-from toyota_na.vehicle.base_vehicle import ToyotaVehicle, VehicleFeatures
-from toyota_na.vehicle.entity_types.ToyotaLockableOpening import ToyotaLockableOpening
-from toyota_na.vehicle.entity_types.ToyotaOpening import ToyotaOpening
-from toyota_na.vehicle.entity_types.ToyotaRemoteStart import ToyotaRemoteStart
+from toyota_na_custom.vehicle.base_vehicle import ToyotaVehicle, VehicleFeatures
+from toyota_na_custom.vehicle.entity_types.ToyotaLockableOpening import ToyotaLockableOpening
+from toyota_na_custom.vehicle.entity_types.ToyotaOpening import ToyotaOpening
+from toyota_na_custom.vehicle.entity_types.ToyotaRemoteStart import ToyotaRemoteStart
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
